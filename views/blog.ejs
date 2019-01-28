@@ -1,0 +1,14 @@
+<% layout('layout') %>
+<div id="wrapper">
+  <a class="navbar-brand" href="/">Jose</a>
+  <h1>Node Blog</h1>
+  <% for(let i = 0; i < posts.length; i++) { %>
+    <article>
+      <p><%= posts[i].info %></p>
+    </article>
+  <% } %>
+  <form action="addpost" method="POST">
+    <textarea name="info"></textarea>
+    <input type="submit" value="Add Post" /> 
+  </form>
+</div>
