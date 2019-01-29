@@ -28,6 +28,10 @@ module.exports = (app, passport) => {
     failureRedirect: '/login',
     failureFlash: true
   }));
+
+  app.get('/company/create', function (req, res) {
+    res.render('company/company', { title: 'Company', user: req.user});
+  });
 }
 
 function signupValidate(req, res, next) {
