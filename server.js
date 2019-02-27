@@ -11,6 +11,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/jose-rate', { useNewUrlParser: true });
 require('./config/passport');
 
@@ -37,6 +38,7 @@ app.use(passport.session());
 
 require('./routes/user')(app, passport);
 require('./routes/blog')(app);
+require('./routes/company')(app);
 
 app.listen(3000, function() {
     console.log('App running on port 3000');

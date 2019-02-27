@@ -1,0 +1,23 @@
+.fa-angle-right {
+  display: none;  
+}
+.toggled .fa-angle-left {
+    display: none;
+}
+
+.toggled .fa-angle-right {
+  display: inline-block;
+}
+
+#menu-toggle {
+  float: left;
+  height: 50px;
+  width: 50px;
+  padding: 15px 15px;
+  margin-left: -15px;
+  font-size: 18px;
+  line-height: 20px;
+  color: #777;
+  text-align: center;
+  border-right: 1px solid #e7e7e7;
+}

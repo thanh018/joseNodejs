@@ -40,6 +40,7 @@ body {
     width: 100%;
     position: absolute;
     padding: 15px;
+    transition: all 0.5s ease;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -50,20 +51,15 @@ body {
 /* Sidebar Styles */
 
 .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .profile_info {
-  padding: 0px 10px 10px;
-  width: 85%;
   text-align: center;
   margin-top: 0px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -97,7 +93,10 @@ body {
     z-index: 2;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-	border-bottom: 0.5px solid #808080;
+}
+
+.sidebar-nav li + li a {
+	border-top: 0.5px solid #808080;
 }
 
 .sidebar-nav li a:hover {
@@ -123,10 +122,9 @@ body {
 }
 
 .sidebar-brand {
-    height: 65px;
     font-size: 25px;
-    line-height: 60px;
     text-align: center;
+    padding: 20px 0;
 }
 
 .sidebar-brand a {
@@ -144,8 +142,6 @@ body {
     display: block;
     width: 65px;
     height: 65px;
-    text-align: center;
-    margin-top: 65px;
     text-align: center;
     margin-right: auto;
     margin-left: auto;

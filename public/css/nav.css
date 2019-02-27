@@ -1,0 +1,7 @@
+.username {
+    text-transform: capitalize;
+}
+
+.navbar > .container-fluid .navbar-brand {
+    margin-left: 0;
+}

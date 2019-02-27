@@ -57,12 +57,12 @@ input[type="submit"]{
 }
 
 #colDesc{
-    margin: 50px 20px 0px 70px;
-    padding-top: 40px;
     background-color: white;
     height: 350px;
     float: left;
-    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #colDesc h3{
@@ -86,8 +86,7 @@ input[type="submit"]{
 }
 
 .info-icon i{
-    font-size: 60px;
-    margin-top: 10px;
+    font-size: 50px;
     color: #73879C;
 }
 
@@ -116,18 +115,27 @@ input[type="submit"]{
 
 
 .companyListDiv{
-    margin: 20px 0px 0px 38px;
     background-color: white;
-    height: 120px;
-    width: 30%;
     box-shadow: 5px 5px 5px #888888;
     padding: 0;
 }
 
-.companyListItemLogo{
-    display: inline;;
-    width: 100px;
+.companyListDiv a {
     height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.companyListDiv a img {
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+}
+
+.companyListItemLogo{
+    display: inline;
+    width: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
     float: left;
@@ -136,8 +144,6 @@ input[type="submit"]{
 .companyListItemInfo{
     margin: 0;
     padding: 10px;
-    height: 120px;
-    width: 215px;
     float: left;
 }
 
@@ -157,12 +163,23 @@ input[type="submit"]{
     color: #73879C;
 }
 
+.companyListItemInfo .btn {
+    margin-bottom: 15px;
+}
+
+.companyListItemInfo .fa {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.companyListItemInfo .fa:before {
+    margin-right: 10px;
+}
+
 
 .mainDiv{
     background-color: white;
     height: auto;
-    margin-bottom: 50px;
-    width: 100%;
 }
 
 .mainDiv h3{
@@ -197,21 +214,25 @@ input[type="submit"]{
     margin: 20px 10px 0px 10px;
 }
 
-.colDiv .col-md-4{
+.colDiv .col-md-4 .count {
     border: 1px solid #e7e7e7;
-    margin: 0px 5px 20px 10px;
-    width: 270px;
-    height: 150px;
+    padding: 20px 10px;
+    min-height: 185px;
     color: #73879C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.colDiv .header{
+.colDiv .review {
     height: 55px;
     background-color: #f5f7fa;
     color: #73879C;
-    margin-bottom: 20px;
+    margin: 20px 15px;
+    padding: 15px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .colDiv .header h2{
@@ -224,7 +245,6 @@ input[type="submit"]{
 .colDiv .header a{
     font-size: 15px;
     font-weight: normal;
-    margin: 0px 0px 0px 590px;
 }
 
 .reviewDiv{
@@ -342,7 +362,7 @@ input[type="submit"]{
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 100%;
 }
 
 .modal-title{
@@ -378,3 +398,26 @@ input[type="submit"]{
 .width-100 {
     width: 100%;
 }
+
+.modal-body .progress {
+    background-color: #dddddd;
+}
+
+.modal-body .progress-bar {
+    background-color: #007bff;
+}
+
+.main_body > .row {
+    display: block;
+}
+
+.navbar-nav > li,
+.navbar-light .navbar-brand {
+    font-size: 14px;
+}
+
+.navbar-light .navbar-brand  {
+  padding-top: 13px;
+  padding-bottom: 15px;
+}
+
