@@ -118,6 +118,7 @@ input[type="submit"]{
     background-color: white;
     box-shadow: 5px 5px 5px #888888;
     padding: 0;
+    margin-bottom: 10px;
 }
 
 .companyListDiv a {
@@ -126,7 +127,7 @@ input[type="submit"]{
     align-items: center;
 }
 
-.companyListDiv a img {
+.companyListDiv a .companyListItemLogo {
     width: 120px;
     height: 120px;
     display: inline-block;
@@ -163,7 +164,7 @@ input[type="submit"]{
     color: #73879C;
 }
 
-.companyListItemInfo .btn {
+.companyListItemInfo .action-company .btn {
     margin-bottom: 15px;
 }
 
@@ -180,6 +181,7 @@ input[type="submit"]{
 .mainDiv{
     background-color: white;
     height: auto;
+    margin: 20px 10px 0px 10px;
 }
 
 .mainDiv h3{
@@ -334,7 +336,7 @@ input[type="submit"]{
 }
 
 
-.bodyDiv h4{
+.bodyDiv > h4 {
     color: #73879C;
     font-size: 24px;
     font-weight: 500;
@@ -363,6 +365,21 @@ input[type="submit"]{
     padding: 20px;
     border: 1px solid #888;
     width: 100%;
+}
+
+.modal-content .modal-header .close {
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    line-height: 20px;
+    opacity: 0.4;
+}
+
+.modal-content .modal-header,
+.modal-content .modal-body {
+    padding: 15px 0;
 }
 
 .modal-title{
@@ -421,3 +438,25 @@ input[type="submit"]{
   padding-bottom: 15px;
 }
 
+
+.star-item {
+    width: 40px;
+    height: 40px;
+}
+
+
+.star-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.star-list {
+    margin-top: 10px;
+    width: 220px;
+}
+
+.main_body .star-block #showTitle {
+    text-align: left;
+    margin: 10px 0;
+    font-size: 14px;
+}

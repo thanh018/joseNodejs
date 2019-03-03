@@ -3,6 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var Company = require('../models/company');
+var User = require('../models/user');
 
 module.exports = (app) => {
   app.get('/company/create', function (req, res) {
@@ -16,23 +17,28 @@ module.exports = (app) => {
   });
 
   app.post('/company/create', function(req, res){
-    var newCompany = new Company();
-    newCompany.name = req.body.name;
-    newCompany.address = req.body.address;
-    newCompany.city = req.body.city;
-    newCompany.country = req.body.country;
-    newCompany.sector = req.body.sector;
-    newCompany.website = req.body.website;
-    newCompany.image = req.body.upload;
-
-    newCompany.save((err) => {
-      if(err) {
-        console.log(err);
-      }
-      console.log(newCompany);
-      req.flash('success', 'Company data has been added.');
-      res.redirect('/company/create');
-    });
+    if(!req.body.name || !req.body.address || !req.body.city || 
+      !req.body.country || !req.body.sector || !req.body.website) {
+        console.log('At least a field is empty');
+        res.status(403).redirect('/company/create');
+    } else {
+      var newCompany = new Company();
+      newCompany.name = req.body.name;
+      newCompany.address = req.body.address;
+      newCompany.city = req.body.city;
+      newCompany.country = req.body.country;
+      newCompany.sector = req.body.sector;
+      newCompany.website = req.body.website;
+      newCompany.image = req.body.upload;
+      newCompany.save((err) => {
+        if(err) {
+          console.log(err);
+        }
+        console.log(newCompany);
+        req.flash('success', 'Company data has been added.');
+        res.redirect('/company/create');
+      });
+    }
   });
 
   app.post('/upload', (req, res) => {
@@ -78,10 +84,13 @@ module.exports = (app) => {
   });
 
   app.get('/company-profile/:id', (req, res) => {
-    res.render('company/company-profile', { 
-      title: 'Company Profile',
-      user: req.user,
-      id: req.params.id
+    Company.findOne({ '_id': req.params.id }, (err, company) => {
+      res.render('company/company-profile', { 
+        title: 'Company Profile',
+        user: req.user,
+        id: req.params.id,
+        company: company
+      });
     });
   });
 
@@ -100,13 +109,14 @@ module.exports = (app) => {
       function(callback){
         Company.update({
           '_id': req.params.id,
-          'employees.employeeId': { $ne: req.user_id} 
+          'employees.employeeId': { $ne: req.user._id} 
         },
         {
           $push: {
             employees: {
-            employeeId: req.user._id, employeeFullname: req.user.fullname,
-            employeeRole: req.user.role
+              employeeId: req.user._id,
+              employeeFullname: req.user.fullname,
+              employeeRole: req.body.role
             }
           }
         }, (err, count) => {
@@ -114,9 +124,27 @@ module.exports = (app) => {
             return next(err);
           }
           callback(err, count);
-        }
-        )
+        });
+      },
+      function(callback) {
+        async.waterfall([
+          function(callback) {
+            Company.findOne({ '_id': req.params.id }, (err, data) => {
+              callback(err, data);
+            })
+          },
+          function(data, callback) {
+            User.findOne({ '_id': req.user._id }, (error, result) => {
+              result.role = req.body.role;
+              result.company.name = data.name;
+              result.company.image = data.image;
+              result.save((err) => {
+                res.redirect('/home');
+              })
+            })
+          }
+        ]);
       }
-    ])
+    ]);
   });
 }

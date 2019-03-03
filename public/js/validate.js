@@ -7,7 +7,6 @@ $(document).ready(function() {
     var country = $.trim($('#country').val());
     var sector = $.trim($('#sector').val());
     var website = $.trim($('#website').val());
-    var img = $.trim($('#upload-input').val());
     var isValid = true;
 
     if(name === '') {

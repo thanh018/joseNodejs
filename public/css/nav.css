@@ -5,3 +5,7 @@
 .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
 }
+
+.navbar-inverse .navbar-nav > li > .login-link {
+    color: #8BC34A;
+}

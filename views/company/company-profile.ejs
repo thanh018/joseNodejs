@@ -9,34 +9,43 @@
         <div class="row mainDiv">
           <div class="innerDiv">
             <div class="col-md-3" style="margin-bottom: 30px;">
-              <img src="http://placehold.it/270x270" width="270px" height="270px" alt="" class="companyListItemLogo" />
+              <img src="/uploads/<%= company.image %>" width="270px" height="270px" alt="" class="companyListItemLogo" />
               <div class="companyListItemInfo">
                 <h3>
-                  Company Name
+                  <%= company.name %>
                 </h3>
                 <span>
                   <i class="star"></i>
                   *****
                 </span>
-                <div class="action-company margin-top-20">
-                  <i class="fa fa-building-o">City, country</i>
-                  <i class="fa fa-map-marker">Sector</i>
+                <div class="info-company">
+                  <i class="fa fa-building-o"><%= company.city %>, <%= company.country %></i>
+                  <i class="fa fa-map-marker"><%= company.sector %></i>
                   <i class="fa fa-external-link">
-                    <a href="testing.com" target="_blank">http://www.testing.com</a>
+                    <a href="testing.com" target="_blank"><%= company.website %></a>
                   </i>
                 </div>
                 
 
                 <div class="action-company margin-top-20">
-                  <a href="" class="btn btn-success">Rate this company</a>
+                  <a href="/review/<%= company._id %>" class="btn btn-success" title="">Rate this company</a>
                   <a href="" class="btn btn-info">View company employee</a>
-                  <a href="/company/register-employee/<%= id %>"
-                    class="btn btn-primary">
-                    Register me as an employee
-                  </a>
+
+                  <% if(user.company.name !== company.name) { %>
+                    <a href="/company/register-employee/<%= id %>"
+                      class="btn btn-primary">
+                      Register me as an employee
+                    </a>
+                  <% } else { %>
+                    <h5 class="is-an-employee" style="text-transform: uppercase; font-size: 16px; color: #337ab7;">
+                      <b>You are an employee</b>
+                    </h5>
+
+                  <% } %>
+                  
                 </div>
 
-                <h3>Average Rating</h3>
+                <h3 class="average margin-top-15">Average Rating</h3>
                 <h5 class="star"></h5>
                 <p>Based on 5 review(s)</p>
               </div>

@@ -10,7 +10,7 @@ var companySchema = mongoose.Schema({
   image: {type: String, default: 'defaultPic.jpg'},
   employees: [{
     employeeId: {type: String, default: ''},
-    employFullname: {type: String, default: ''},
+    employeeFullname: {type: String, default: ''},
     employeeRole: {type: String, default: ''}
   }],
 

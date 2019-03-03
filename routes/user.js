@@ -18,9 +18,13 @@ module.exports = (app, passport) => {
     failureFlash: true
   }));
 
-  app.get('/login', function (req, res) {
+  app.get('/login', function (req, res, next) {
     var errors = req.flash('error');
-    res.render('user/login', { title: 'Login', messages: errors, hasErrors: errors.length > 0 });
+    res.render('user/login', { 
+      title: 'Login',
+      messages: errors,
+      hasErrors: errors.length > 0,
+    });
   });
 
   app.post('/login', loginValidate, passport.authenticate('local.login', {
@@ -28,6 +32,13 @@ module.exports = (app, passport) => {
     failureRedirect: '/login',
     failureFlash: true
   }));
+  
+  app.get('/logout', (req, res) => {
+    req.logout();
+    req.session.destroy((err) => { 
+      res.redirect('/')
+    });
+  });
 }
 
 function signupValidate(req, res, next) {

@@ -1,9 +1,9 @@
-var Post = require('../models/blog');
+var Blog = require('../models/blog');
 
 module.exports = (app) => {
   app.post('/addpost', (req, res) => {
-    var postData = new Post(req.body);
-    postData.save().then(result => {
+    var newBlog = new Blog(req.body);
+    newBlog.save().then(result => {
       res.redirect('/blog');
     }).catch(err => {
       res.status(400).send('Unable to save data');
@@ -11,8 +11,12 @@ module.exports = (app) => {
   });
 
   app.get('/blog', (req, res) => {
-    Post.find({}, (err, posts) => {
-      res.render('blog', { posts: posts, title: 'Blog' });
+    Blog.find({}, (err, blog) => {
+      res.render('blog', { 
+        title: 'Blog',
+        blog: blog,
+        user: req.user,
+      });
     })
   });
 
