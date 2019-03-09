@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/jose-rate', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/jose-rate');
 require('./config/passport');
 
 app.use(express.static('public'));
@@ -41,6 +41,6 @@ require('./routes/blog')(app);
 require('./routes/company')(app);
 require('./routes/review')(app);
 
-app.listen(3000, function() {
-    console.log('App running on port 3000');
+app.listen(3999, function() {
+    console.log('App running on port 3999');
 })

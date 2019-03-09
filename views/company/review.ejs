@@ -1,55 +1,69 @@
 <% layout('layout2') %>
+
+
 <div id="wrapper">
-  <% include ../partials/sidebar %>
-  <div id="page-content-wrapper">
-    <% include ../partials/navbar%>
-    <div class="container-fluid main_body">
-      <!-- navbar in review -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/companies">Companies</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div class="bodyDiv">
-        <h4>Write Review</h4>
-        <div class="row">
-          <div class="col-md-6">
-            <form action="/" method="post">
-              <input class="form-control" id="id-company" value="<%= company._id %>" type="hidden" style="margin-bottom: 20px;"/>
-              <div class="form-group">
-                <label for="">Sending company</label>
-                <input class="form-control" id="sender" name="sender" value="<%= user.company.name %>" type="text" style="margin-bottom: 20px;"/>
+
+    <% include ../partials/sidebar %>
+
+    <div id="page-content-wrapper">
+        <% include ../partials/navbar %>
+        <div class="container-fluid main_body">
+          <!-- navbar in review -->
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/companies">Companies</a></li>
+                </ul>
               </div>
-              <div class="form-group">
-                <label for="">Receiving company</label>
-                <input class="form-control" id="receiver" name="receiver" value="<%= company.name %>" type="text" style="margin-bottom: 20px;"/>
-              </div>
-              <div class="form-group star-block">
-                <label for="">Rating</label>
-                <div class="star-list">
-                  <img class="star-item" id="1_star" alt="1" src="/images/star_off.png" title="Bad"/>
-                  <img class="star-item" id="2_star" alt="2" src="/images/star_off.png" title="Poor"/>
-                  <img class="star-item" id="3_star" alt="3" src="/images/star_off.png" title="Fair"/>
-                  <img class="star-item" id="4_star" alt="4" src="/images/star_off.png" title="Good"/>
-                  <img class="star-item" id="5_star" alt="5" src="/images/star_off.png" title="Excellent"/>
-                  <p id="showTitle">Give a review</p>
+            </nav>
+            <div class="bodyDiv">
+				      <h4 style="">Write Review</h4>
+              <% if(hasMsg) {%>
+                  <div class="alert alert-success"><%= msg %></div>
+              <% }%>
+              <div class="row">
+                <div class="col-md-6">
+                  <form action="" method="post">
+                      <input class="form-control" id="id" value="<%= data._id %>" type="hidden">
+                      <div class="form-group ">
+                          <label for="">Sending Company</label>
+                          <input id="sender" class="form-control" name="sender" value="<%= user.company.name %>" type="text" style="margin-bottom:20px;">
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="">Receiving Company</label>
+                          <input id="receiver" class="form-control" name="receiver" value="<%= data.name %>" type="text" style="margin-bottom:20px;">
+                      </div>
+
+                      <div class="form-group star-block">
+                          <label for="">Rating</label>
+                          <div class="star-list">
+                              <img class="star-item" id="1_star" src="/images/star_off.png" alt="1" title="Bad">
+                              <img class="star-item" id="2_star" src="/images/star_off.png" alt="2" title="Poor">
+                              <img class="star-item" id="3_star" src="/images/star_off.png" alt="3" title="Fair">
+                              <img class="star-item" id="4_star" src="/images/star_off.png" alt="4" title="Good">
+                              <img class="star-item" id="5_star" src="/images/star_off.png" alt="5" title="Excellent">
+
+                              <p id="showTitle"></p>
+                          </div>
+
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="">Review</label>
+                          <textarea name="review" id="review" rows="8" cols="80" class="form-control"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                          <input type="submit" id="rate" value="Create" class="form-control btn btn-primary button-submit" name="rate" style="">
+                      </div>
+                  </form>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="">Review</label>
-                <textarea class="form-control" name="review" type="text" rows="8" cols="80" ></textarea>
-              </div>
-              <div class="form-group">
-                <input class="form-control btn btn-primary button-submit" id="rate" name="rate" value="Create" type="submit"/>
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-    
     </div>
-  </div>
 </div>
+
+

@@ -1,55 +1,50 @@
 <% layout('layout') %>
 <div class="container">
-  <br><br>
-  <div class="text-center reg_msg">
-    <h1><a href="/">Jose Rate</a></h1>
-  </div>
-  <br><br>
-
-  <div class="">
-    <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-lg center-block">
-      <i class="fa fa-facebook"></i> Login with Facebook
-    </a>
-  </div><br>
-
-
-  <div class="text-center reg_msg">
-    <h2 class="fancy"><span>LOGIN</span></h2>
-  </div><br>
-
-  <div class="row signup">
-    <% if(hasErrors) {%>
-      <% for(var i = 0; i <messages.length; i++) {%>
-      <div class="alert alert-danger">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">
-          &times;
-        </a>
-        <%= messages[i] %>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Jose Rate</a></li>
+            <li><a href="/signup">Sign up</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="text-center reg_msg">
+        <h2 class="fancy"><span>LOGIN</span></h2>
       </div>
-      <% } %>
-    <% } %>
+      <div class="margin-top-20">
+        <% if(hasErrors) {%>
+          <% for(var i = 0; i <messages.length; i++) {%>
+          <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">
+              &times;
+            </a>
+            <%= messages[i] %>
+          </div>
+          <% } %>
+        <% } %>
 
-    <form method="POST" class="width-100" id="signupForm" action="/login">
-
-      <div class="form-group input_group">
-        <input id="email" class="form-control" name="email" type="text" autocomplete="on" placeholder="EMAIL" style="margin-bottom:20px;">
+        <form method="POST" class="width-100" id="signupForm" action="/login">
+          <div class="form-group input_group">
+            <input id="email" class="form-control" name="email" type="text" autocomplete="on" placeholder="EMAIL" style="margin-bottom:20px;">
+          </div>
+          <div class="form-group input_group">
+            <input id="password" class="form-control" name="password" type="password" placeholder="PASSWORD" style="margin-bottom:20px;">
+          </div>
+          <div class="">
+            <input type="submit" id="submit" value="LOGIN" class="form-control btn btn-primary" name="submit" style="margin-bottom:20px;">
+          </div>
+        </form>
+        <div class="login-with-facebook">
+          <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-lg center-block">
+            <i class="fa fa-facebook"></i> Login with Facebook
+          </a>
+        </div>
+        <div class="width-100">
+          <h4>You don't have any account <a href="/signup">Sign up</a></h4>
+        </div>
       </div>
-
-      <div class="form-group input_group">
-        <input id="password" class="form-control" name="password" type="password" placeholder="PASSWORD" style="margin-bottom:20px;">
-      </div>
-
-
-      <div class="form-group">
-        <input type="submit" id="submit" value="LOGIN" class="form-control btn btn-primary" name="submit" style="">
-      </div>
-
-    </form>
-
-    <div class="width-100">
-      <h4>You don't have any account <a href="/signup">Sign up</a></h4>
     </div>
-
-
   </div>
 </div>

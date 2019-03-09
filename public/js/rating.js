@@ -120,11 +120,12 @@ $(document).ready(function () {
     }
   });
 
-  $('#rate').on('click', function() {
+  $('#rate').on('click', function(e) {
     var sender = $('#sender').val();
     var review = $('#review').val();
-    var id = $('#id-company').val();
+    var id = $('#id').val();
     var valid = true;
+    console.log(clickedValue);
 
     if(!clickedValue) {
       valid = false;
@@ -133,7 +134,7 @@ $(document).ready(function () {
       $('#error').html('');
     }
 
-    if(valid) {
+    if(valid === true) {
       $.ajax({
         url: '/review/' + id,
         type: 'POST',
@@ -142,10 +143,10 @@ $(document).ready(function () {
           review: review,
           sender: sender
         },
-        success: function(res) {
-          sender = $('#sender').val('');
-          review = $('#review').val('');
-          id = $('#id-company').val('');
+        success: function() {
+          $('#sender').val('');
+          $('#review').val('');
+          $('#id').val('');
         }
       });
     } else {

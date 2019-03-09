@@ -28,3 +28,7 @@ a:hover {
   width: 100%;
   display: block;
 }
+
+.block-center {
+  margin: 0 auto;
+}

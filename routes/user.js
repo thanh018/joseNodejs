@@ -13,7 +13,7 @@ module.exports = (app, passport) => {
   });
 
   app.post('/signup', signupValidate, passport.authenticate('local.signup', {
-    successRedirect: '/',
+    successRedirect: '/home',
     failureRedirect: '/signup',
     failureFlash: true
   }));
@@ -28,7 +28,7 @@ module.exports = (app, passport) => {
   });
 
   app.post('/login', loginValidate, passport.authenticate('local.login', {
-    successRedirect: '/',
+    successRedirect: '/home',
     failureRedirect: '/login',
     failureFlash: true
   }));
