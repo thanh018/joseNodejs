@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('.upload-btn').on('click', function () {
+  $('.upload-btn').off('click').on('click', function () {
     $('#upload-input').click();
 
     $('.progress-bar').text('0%');

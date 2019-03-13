@@ -37,7 +37,7 @@ module.exports = (app) => {
             $inc: { ratingSum: req.body.clickedValue }
           }, (err) => {
             req.flash('success', 'Your review has been added.');
-            res.redirect('/review/' + req.params.id)
+            // res.redirect('/review/' + req.params.id)
           })
       }
     ])

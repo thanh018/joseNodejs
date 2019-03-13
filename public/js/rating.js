@@ -120,7 +120,8 @@ $(document).ready(function () {
     }
   });
 
-  $('#rate').on('click', function(e) {
+  $('#rate').off('click').on('click', function(e) {
+    e.preventDefault();
     var sender = $('#sender').val();
     var review = $('#review').val();
     var id = $('#id').val();
@@ -143,7 +144,7 @@ $(document).ready(function () {
           review: review,
           sender: sender
         },
-        success: function() {
+        success: function(res) {
           $('#sender').val('');
           $('#review').val('');
           $('#id').val('');
